@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.svenruppert</groupId>
+        <artifactId>dependencies</artifactId>
+        <version>06.00.02</version>
+    </parent>
+
+
+    <groupId>com.svenruppert.secure-coding-practices</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>secure-coding-practices</name>
+    <url>http://svenruppert.com/</url>
+    <modules>
+        <module>module-01</module>
+        <module>inputvalidation</module>
+        <module>sqlinjection</module>
+        <module>fuzzing</module>
+        <module>mutationtesting</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <pitest-prod-classes>com.svenruppert.*</pitest-prod-classes>
+        <pitest-test-classes>junit.*</pitest-test-classes>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.svenruppert</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--Enable mutation testing-->
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+
+                </dependencies>
+                <configuration>
+                    <threads>2</threads>
+                    <outputFormats>
+                        <outputFormat>XML</outputFormat>
+                        <outputFormat>HTML</outputFormat>
+                    </outputFormats>
+                    <targetClasses>
+                        <param>${pitest-prod-classes}</param>
+                        <!--<param>org.reflections.*</param>-->
+                    </targetClasses>
+                    <targetTests>
+                        <param>${pitest-test-classes}</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
