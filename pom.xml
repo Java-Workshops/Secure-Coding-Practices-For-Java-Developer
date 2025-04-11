@@ -22,6 +22,7 @@
         <module>sqlinjection</module>
         <module>fuzzing</module>
         <module>mutationtesting</module>
+        <module>java-agent</module>
     </modules>
 
     <properties>
