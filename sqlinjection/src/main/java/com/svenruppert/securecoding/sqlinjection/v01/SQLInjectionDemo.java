@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class SQLInjectionDemo {
   public static void main(String[] args) {
     Database db = new Database();
-    db.addUser("admin", "password123");
+    db.addUser("admin", "adminadmin");
 
     Scanner scanner = new Scanner(System.in);
 
@@ -26,5 +26,3 @@ public class SQLInjectionDemo {
     scanner.close();
   }
 }
-
-

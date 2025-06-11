@@ -23,15 +23,19 @@
         <module>fuzzing</module>
         <module>mutationtesting</module>
         <module>java-agent</module>
+        <module>demorestservice</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>24</maven.compiler.source>
+        <maven.compiler.target>24</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <pitest-prod-classes>com.svenruppert.*</pitest-prod-classes>
         <pitest-test-classes>junit.*</pitest-test-classes>
+
+<!--        <checkstyle.skip>true</checkstyle.skip>-->
+<!--        <spotbugs.skip>true</spotbugs.skip>-->
 
     </properties>
 

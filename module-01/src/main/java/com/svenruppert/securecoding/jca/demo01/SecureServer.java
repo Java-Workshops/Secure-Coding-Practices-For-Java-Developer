@@ -39,7 +39,7 @@ public class SecureServer implements HasLogger {
     server.createContext("/secureMessage", (HttpExchange exchange) -> {
       byte[] encryptedMessage = exchange.getRequestBody().readAllBytes();
       String decryptedMessage = decryptAES(encryptedMessage, aesKey);
-      logger().info("Entschlüsselte Nachricht: " + decryptedMessage);
+      logger().info("Entschlüsselte Nachricht: {}", decryptedMessage);
       exchange.sendResponseHeaders(200, 0);
       exchange.close();
     });

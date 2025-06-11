@@ -61,7 +61,7 @@ public class CharArrayString {
 
   // Löscht den Speicher (z. B. für sensible Daten)
   public void clear() {
-//    char[] array = writer.toCharArray();
+    char[] array = writer.toCharArray();//TODO falsch
 
 
     Arrays.fill(array, '\0');  // Überschreibt den Speicherbereich
@@ -88,4 +88,3 @@ public class CharArrayString {
     System.out.println(writer.toCharArray());
   }
 }
-
